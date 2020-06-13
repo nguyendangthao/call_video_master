@@ -1,0 +1,30 @@
+//.room-comm(class="pull-right col-10")
+    //- button#toggle-video(class="btn btn-sm btn-primary")
+    //-     i(class="fa fa-video text-white")
+    //- button#toggle-mute(class="btn btn-sm btn-primary")
+    //-     i(class="fa fa-phone text-white")
+//model recode
+#recording-options-modal(class="custom-modal")
+    .custom-modal-content()
+        .text-center(class="row")
+            Span#record-video(class="record-option col-md-4 mb-4") Record video
+            Span#record-screen(class="record-option col-md-4 mb-4") Record screen
+            Span#closeModal(class="record-option col-md-4 mb-4") Close
+
+.room-comm(class="container-fluid")
+     //screen self
+     div(class="row " id="screen-local")
+         video#local(class="local-video mirror-mode"  volume='0' autoplay muted)
+         div(class="local-video-controls")   
+             i(class="fa fa-microphone text-white pr-3 " id="mute-remote-mic" title="Mute")
+             i(class="fa fa-video text-white pr-3" id="camera-local-video" title="Camera")
+             i#share-screen(class="fa fa-desktop text-white pr-3" title="Share")
+             i#record(class="fa fa-dot-circle text-white" title="Record")
+             button#toggle-video(class="btn btn-sm btn-primary")
+                i(class="fa fa-video text-white")
+
+     //screen call partner
+     div(class="row")
+         div#main-section(class="main")
+             div#videos(class="row mt-3 mb-3" style="max-width: 600px")
+                  

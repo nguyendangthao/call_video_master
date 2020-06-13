@@ -1,0 +1,158 @@
+doctype html
+// Basic
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  // Mobile Metas
+  meta(name='viewport', content='width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no')
+  // Site Metas
+  title T3V Online
+  meta(name='keywords', content='')
+  meta(name='description', content='')
+  meta(name='author', content='')
+  // Site Icons
+  link(rel='shortcut icon', href='#', type='image/x-icon')
+  link(rel='apple-touch-icon', href='#')
+  // Bootstrap CSS
+  link(rel='stylesheet', href='/index/css/bootstrap.min.css')
+  // Pogo Slider CSS
+  link(rel='stylesheet', href='/index/css/pogo-slider.min.css')
+  // Site CSS
+  link(rel='stylesheet', href='/index/css/style.css')
+  // Responsive CSS
+  link(rel='stylesheet', href='/index/css/responsive.css')
+  // Custom CSS
+  link(rel='stylesheet', href='/index/css/custom.css')
+  //if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+// LOADER
+#preloader
+  .loader
+    img(src='/index/images/loader.gif', alt='#')
+// end loader
+// END LOADER
+// Start header
+include layouts/header.pug
+// End header
+// Start Banner
+.ulockd-home-slider
+  .container-fluid
+    .row
+      #js-main-slider.pogoSlider
+        .pogoSlider-slide(style='background-image:url(/index/images/slider-01.jpg);')
+          .container
+            .row
+              .col-md-12
+                .slide_text
+                  h3
+                    span.theme_color YOUR DRIVE 
+                    | TO THE FUTURE
+                  br
+                  h4  STARTS WITH E-LEARNING
+                  br
+                  p
+                    | Learn something new everyday
+                    br
+                    | We help you learn what you  love
+                  a.contact_bt(href='#') Contact us
+        .pogoSlider-slide(style='background-image:url(/index/images/photo-1-1545733894710618378974.gif);')
+          .container
+            .row
+              .col-md-12
+                .slide_text
+                  h3
+                    span.theme_color YOUR DRIVE 
+                    | TO THE FUTURE
+                  br
+                  h4  STARTS WITH E-LEARNING
+                  br
+                  p
+                    | Learn something new everyday
+                    br
+                    | We help you learn what you  love
+                  a.contact_bt(href='#') Contact us
+      // .pogoSlider
+// end section
+// Start Footer
+footer.footer-box
+  .container
+    .row
+      .col-lg-12.white_fonts
+        h4.text-align Contact Us
+      .margin-top_30.col-md-8.offset-md-2.white_fonts
+        .row
+          .col-md-4
+            .full.icon.text_align_center
+              img(src='/index/images/social1.png')
+            .full.white_fonts.text_align_center
+              p
+                | So 1 TQB, Hai Ba Trung
+                br
+                | Ha Noi
+          .col-md-4
+            .full.icon.text_align_center
+              img(src='/index/images/social2.png')
+            .full.white_fonts.text_align_center
+              p
+                | consultation@gmail.com
+                br
+                | consultation@gmail.com
+          .col-md-4
+            .full.icon.text_align_center
+              img(src='/index/images/social3.png')
+            .full.white_fonts.text_align_center
+              p
+                | +7586656566
+                br
+                | +7586656566
+    .row.white_fonts.margin-top_30
+      .col-lg-12
+        .full
+          .center
+            ul.social_icon
+              li
+                a(href='#')
+                  i.fa.fa-facebook-f
+              li
+                a(href='#')
+                  i.fa.fa-twitter
+              li
+                a(href='#')
+                  i.fa.fa-linkedin
+              li
+                a(href='#')
+                  i.fa.fa-google-plus
+// End Footer
+.footer_bottom
+  .container
+    .row
+      .col-12
+        p.crp &copy; 2019 RD resume . All Rights Reserved.
+        ul.bottom_menu
+          li
+            a(href='#') About Us
+          li
+            a(href='#') Find jobs
+          li
+            a(href='contact.html') Contact us
+          li
+            a(href='#') Terms of Service
+          li
+            a(href='#') Privacy
+a#scroll-to-top.hvr-radial-out(href='#')
+  i.fa.fa-angle-up
+// ALL JS FILES
+script(src='/index/js/jquery.min.js')
+script(src='/index/js/popper.min.js')
+script(src='/index/js/bootstrap.min.js')
+// ALL PLUGINS
+script(src='/index/js/jquery.magnific-popup.min.js')
+script(src='/index/js/jquery.pogo-slider.min.js')
+script(src='/index/js/slider-index.js')
+script(src='/index/js/smoothscroll.js')
+script(src='/index/js/form-validator.min.js')
+script(src='/index/js/contact-form-script.js')
+script(src='index/js/isotope.min.js')
+script(src='/index/js/images-loded.min.js')
+script(src='/index/js/custom.js')

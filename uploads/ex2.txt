@@ -1,0 +1,33 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+int n;
+int sum;
+using namespace std;
+
+int main()
+{
+    cin >> n;
+    int a[n], b[n];
+    for (int i=0; i<n; i++)
+     cin >> a[i] >> b[i];
+    sum = a[0]+b[0];
+    for (int i=1; i<n; i++)
+    {
+        if (a[i]==0)
+         {   sum = sum + b[i] -a[0];
+            a[0] = 0;}
+        else if (a[i]<=sum)
+            sum += b[i];
+        else sum = a[i]+b[i];
+    }
+    cout << sum;
+    
+    return 0;
+}

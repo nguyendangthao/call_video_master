@@ -1,0 +1,25 @@
+header.top-header
+  nav.navbar.header-nav.navbar-expand-lg
+    .container-fluid
+      a.navbar-brand(href='index.html')
+        img(src='/index/images/logo.png', alt='image')
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbar-wd', aria-controls='navbar-wd', aria-expanded='false', aria-label='Toggle navigation')
+        span
+        span
+        span
+      #navbar-wd.collapse.navbar-collapse.justify-content-end
+        ul.navbar-nav
+          li
+            a.nav-link.active(href='/') Home
+          li
+            a.nav-link(href='about.html') About Us
+          li
+            a.nav-link(href='cycv.html') Contact Us
+          li
+            a.nav-link(style='background:#fff;color:#000;', href="/auth/login") Sign in
+          li
+            a.nav-link.active(style='background:#fff;color:#000;', href="/create") Sign up
+      .search-box
+        input.search-txt(type='text', placeholder='Search')
+        a.search-btn
+          img(src='/index/images/search_icon.png', alt='#')

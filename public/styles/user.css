@@ -1,0 +1,103 @@
+#div-search-room{
+    position: absolute;
+    top: 15%;
+    left: 35%;
+    width: 30%;
+    height: 80%;
+}
+#div-search-room input{
+    height: 90%;
+}
+#newRoom{
+    position: absolute;
+    /* margin: auto; */
+    width: 100%;
+    height: 100%;
+    top: 20%;
+}
+#form-newRoom{
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
+#form-newRoom span{
+    font-size: 120%;
+}
+#form-newRoom #use-random{
+    width: 8%;
+    height: 3%;
+    margin-left: 5%;
+}
+#form-newRoom label{
+    font-weight: bold;
+    font-size: 120%;
+}
+/*show rooms*/
+#show-rooms{
+    position: absolute;
+    top: 5px;
+    left: 20%;
+    width: 80%;
+    height: 100%;
+}
+#show-rooms #div-join{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    width: 25%;
+    height: 12%;
+    z-index: 500;
+}
+#show-rooms #div-rooms{
+    position: absolute;
+    top: 5px;
+    /* left: 10%; */
+    width: 90%;
+    height: 90%;
+}
+#show-rooms #div-rooms #search-room{
+    position: absolute;
+    top: -1%;
+    left: 35%;
+    border: 2px solid #dad4cf;
+    display: none;
+    width: 30%;
+    z-index: 1000;
+    border-radius: 4px;
+}
+#show-rooms #div-rooms h2{
+    text-align: center;
+}
+#show-rooms #div-rooms #list-rooms{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    overflow-y: scroll;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+#show-rooms #div-rooms #list-rooms .each-room{
+    width: 20%;
+    height: 40%;
+    /* border: 1px solid black; */
+    border-radius: 3%;
+    margin-right: 5%;
+}
+#show-rooms #div-rooms #list-rooms .each-room:hover{
+    border: 3px solid #94c0c1;
+    text-decoration: none;
+}
+#show-rooms #div-rooms #list-rooms .each-room img{
+    width: 100%;
+    height: 80%;
+}
+#show-rooms #div-rooms #list-rooms .each-name{
+    font-weight: bold;
+    text-align: center;
+    /* text-decoration: none; */
+    font-size: 150%;
+    color: black;
+}

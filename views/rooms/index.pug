@@ -1,0 +1,154 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Rooms
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh", crossorigin="anonymous")
+        link(rel="stylesheet", href="/styles/index.css")       
+        script(src="/socket.io/socket.io.js")
+        script(src="/scripts/jquery.js")
+        script(src="/scripts/main.js")
+        
+
+        script(src='/scripts/rtc.js' type="module")
+        script(src='/scripts/events.js' type="module")
+        //link(rel="stylesheet", href="/styles/app.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/7.3.0/adapter.min.js" 
+        integrity="sha256-2qQheewaqnZlXJ3RJRghVUwD/3fD9HNqxh4C+zvgmF4=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js")
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js')
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
+    body
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            img#logo(src="/index/images/logo.png", alt="")
+            #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item.active
+                        a#link-home.nav-link(href='/') HOME
+                    li.nav-item
+                        a#link-rooms.nav-link(href='/users') GROUP
+            #div-search
+                input#search(type="text", name="search",class="form-control",placeholder="Add member")
+
+            #notice
+                .fa.fa-bell.iconNotice
+                .txtNotice=0
+            if user
+                a.mr-5(href='/users/'+user.id id="userLogin")=user.name
+            a(href='/auth/logout') Log out
+        #wrapper
+            #searchForm
+                //a.each-search
+            #div-notices
+                p(style="text-align: center; margin-top: 2%") không có thông báo
+            #chatForm
+                #left 
+                    p#notice-add-user 
+                    button#out-group Out                 
+                    #div-curRoom
+                        img#img-curRoom(src="/uploads/group2.png", alt="")
+                        h2(id='currentRoom')=room.name
+                        span(style="line-height:0")= members.length + ' thành viên.' 
+                        p#id-currRoom(hidden)=room.id
+                        input#codehidden(type="text",name="code",hidden, value="")
+                    #div-onlRoom             
+                        h2 GROUPS
+                        #dsRoom
+                            if listRoom
+                                each room in listRoom                                   
+                                    a.link-room(href="/rooms/"+room.idroom, id=room.idroom)
+                                        .name-room=room.name
+                #center
+                    #are-you-sure
+                        p Are you sure?
+                        div
+                            button.yes Yes
+                            button.no No                   
+
+                        //form#form-file(enctype="multipart/form-data")
+                            input#inp-file(type="file", name="files" )
+                            input#submitfile(type="submit", value="Post")
+                            // call video
+                        //button#toggle-video(class="btn btn-sm btn-primary")
+                            i(class="fa fa-video text-white")
+                        //include fun_advan.pug
+                    #div-video-call
+                        div#friend(class="")
+                            div#main-section(class="main")
+                                div#videos()
+                        .room-comm(class="")
+                            div#local-video-controls(class="")   
+                                i(class="fa fa-microphone text-white " id="mute-remote-mic" title="Mute")
+                                i(class="fa fa-video text-white " id="camera-local-video" title="Camera")
+                                i#share-screen(class="fa fa-desktop text-white " title="Share")
+                                i#record(class="fa fa-dot-circle text-white" title="Record")
+                                //button#toggle-video(class="btn btn-sm btn-primary")
+                                i#toggle-video(class="fa fa-phone" style =" color:white")   
+                            div(class=" " id="screen-local" style="padding-bottom: 27px")
+                                video#local(class="local-video mirror-mode" volume='0' autoplay muted)
+                                               
+                    #recording-options-modal(class="custom-modal")
+                        .custom-modal-content()
+                            .text-center()
+                                button#record-video(class="record-option col-md-4 mb-4") Record video
+                                button#record-screen(class="record-option col-md-4 mb-4") Record screen
+                                button#closeModal(class="record-option col-md-4 mb-4") Close    
+
+                    #confirm-options-modal(class="custom-modal-cf")
+                         .custom-modal-content-cf()
+                             .text-center(class="row")
+                             p#txtConfirmCall(style="text-align: center;")
+                             br
+                             p(style="text-align: center;")
+                                 Span#confirm-video(class="record-option-cf col-md-4 mb-4" style="margin-right: 40px;background: #62f162") Đồng ý
+                                 Span#cancel-video(class="record-option-cf col-md-4 mb-4" style="background: #e38e8e;") Bỏ qua 
+                    <audio id="audiocall">
+                        <source src="/index/images/soundcall.mp3" type="audio/mpeg">
+                    </audio>                        
+                #right
+                    #listMessages
+                        if messages                            
+                            each mess in messages
+                                .each-mess
+                                    img(src="/uploads/man-clipart-png-8.png", alt="")
+                                    .each-content
+                                        .user-time
+                                            div(class="user-send")= mess.nameUser 
+                                            div(class="time" style="font-size: 10px")= mess.time
+                                        div(class="ms")= mess.text
+                                    //.liked
+                               
+                    #featureSpace
+                        form(action= '/uploadfile' enctype='multipart/form-data' method='POST', style="width:90%;margin-left:10%")
+                            input.form-control-file(type='file' name='myFile' value='Choose')
+                            button#upload(style="border: 1px solid #0e0e0e; border-radius: 7%") Upload 
+                        .form-message()                        
+                            //.form-group                            
+                            //input#currentIdRoom(type="text", name="roomid",class="form-control", value=room.id, hidden)
+                            input#nameUser(type="text", name="nameUser",class="form-control", value=user.name, hidden)
+                            input#txtMessage(type="text", name="message",class="form-control", placeholder="Send a message")
+                            //input#file(type="file", name="files", )
+                            button#btnSendMessage(class="btn btn-primary") Send
+               
+            
+                    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

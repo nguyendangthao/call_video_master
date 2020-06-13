@@ -1,0 +1,84 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Rooms
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css", integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh", crossorigin="anonymous")
+        link(rel="stylesheet", href="/styles/index.css")       
+        script(src="/socket.io/socket.io.js")
+        script(src="/scripts/jquery.js")
+        script(src="/scripts/main.js")
+        script(src="/scripts/user.js")
+
+        script(src='/scripts/rtc.js' type="module")
+        script(src='/scripts/events.js' type="module")
+        link(rel="stylesheet", href="/styles/user.css")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/7.3.0/adapter.min.js" 
+        integrity="sha256-2qQheewaqnZlXJ3RJRghVUwD/3fD9HNqxh4C+zvgmF4=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js")
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js')
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
+    body
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            img#logo(src="/index/images/logo.png", alt="")
+            #navbarSupportedContent.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item.active
+                        a#link-home.nav-link(href='/') HOME
+                    li.nav-item
+                        a#link-rooms.nav-link(href='/users') GROUP
+            #div-search-room
+                input#inputSearch(type="text", name="search",class="form-control",placeholder="What do you want to search?")
+
+            #notice
+                .fa.fa-bell.iconNotice
+                .txtNotice=0
+            if user
+                a.mr-5(href='/users/'+user.id)=user.name
+            a(href='/auth/logout') Log out
+        #wrapper  
+            #div-notices
+                p(style="text-align: center; margin-top: 2%") không có thông báo            
+            #left 
+                #newRoom
+                    if errors
+                        each error in errors
+                            .alert.alert-danger=error
+                    form#form-newRoom(action='/rooms/create',method="POST")
+                        .form-group
+                            label(for="name") Room Name
+                            input#roomName(type="text", name="name",class="form-control",placeholder="Enter name", value=values?values.name:"")
+                        //.form-group
+                            label(for="code") Code
+                            input#code(type="text", name="code",class="form-control",placeholder="Enter code", value=values?values.code:"")
+                        //.form-group
+                            span Use Random Code
+                            input#use-random(type="radio", name="use-random")
+                        .btn-control
+                            button#btnNewRoom(class="btn btn-primary") New Room
+            #show-rooms
+                #div-join
+                        //form(action='/rooms/join',method="POST")
+                        .form-group
+                            input#codeRoom(type="text", name="code",placeholder="Join new group",class="form-control", value=values?values.code:"")
+                            //button#btnJoinRoom(class="btn btn-primary") Join
+                #div-rooms
+                    h2 GROUPS
+                    #list-rooms
+                        if listRoom
+                            each room in listRoom
+                                    a.each-room(href="/rooms/"+room.idroom, id=room.idroom)
+                                        img(src="/uploads/group2.png", alt="")
+                                        .each-name= room.name     
+                                
+                   
+
+
+
+
+
+
+
+
+
+
